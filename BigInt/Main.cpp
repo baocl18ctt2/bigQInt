@@ -1,9 +1,11 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include "QInt.h"
+#include "QFloat.h"
 #include <sstream>
 #include <conio.h>
 #include <fstream>
 #include <vector>
+/*
 int main(int argc, char* argv[])
 {
 	fstream FileIn;
@@ -166,4 +168,37 @@ int main(int argc, char* argv[])
 	FileIn.close();
 	return 0;
 }
-
+*/
+int main(int argc, char* argv[])
+{
+	fstream FileIn;
+	FileIn.open(argv[1], ios::in);
+	if (!FileIn)
+		cout << "Loi";
+	fstream FileOut;
+	FileOut.open(argv[2], ios::out);
+	while (!FileIn.eof())
+	{
+		string base1;
+		getline(FileIn, base1, ' ');
+		string base2;
+		getline(FileIn, base2, ' ');
+		string str;
+		getline(FileIn, str, '\n');
+		if (base1 == "2")
+		{
+			Qfloat q;
+			q.ScanQfloat(str, 2);
+			FileOut << q.PrintQfloat(10) << endl;
+		}
+		if (base1 == "10")
+		{
+			Qfloat q;
+			q.ScanQfloat(str, 10);
+			FileOut << q.PrintQfloat(2) << endl;
+		}
+	}
+	FileOut.close();
+	FileIn.close();
+	return 0;
+}

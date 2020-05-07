@@ -1,9 +1,2 @@
 ﻿  Main.cpp
-  QInt.cpp
-D:\KTMT&HN\Project\BigInt\QInt.cpp(113,20): warning C4018: '<': signed/unsigned mismatch
-D:\KTMT&HN\Project\BigInt\QInt.cpp(189,20): warning C4018: '<': signed/unsigned mismatch
-D:\KTMT&HN\Project\BigInt\QInt.cpp(245,13): warning C4018: '<': signed/unsigned mismatch
-D:\KTMT&HN\Project\BigInt\QInt.cpp(291,40): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-D:\KTMT&HN\Project\BigInt\QInt.cpp(532): warning C4715: 'QInt::operator<': not all control paths return a value
   BigInt.vcxproj -> D:\KTMT&HN\Project\Debug\BigInt.exe
