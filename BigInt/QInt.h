@@ -30,4 +30,32 @@ public:
 	string binToDec(const QInt& src);
 	string binToHex(const QInt& src);
 	void mergeByFourBit(string a, string& b);
+	QInt operator & (const QInt&);
+	QInt operator | (const QInt&);
+	QInt operator ^ (const QInt&);
+	QInt operator ~();
+
+	QInt operator +(const QInt&);
+	QInt operator -(const QInt&);
+	QInt operator * (const QInt&);
+	QInt operator / (const QInt&);
+
+	bool operator == (const QInt&);
+	bool operator != (const QInt&);
+	QInt& operator = (const QInt&);
+	bool operator < (const QInt&);
+	bool operator > (const QInt&);
+	bool operator <=(const QInt&);
+	bool operator >= (const QInt&);
+
+	
+
+	QInt operator <<(int);
+	QInt operator >>(int);
+
+	QInt rol();
+	QInt ror();
+	QInt rol(int);
+	QInt ror(int);
+
 };

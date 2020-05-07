@@ -4,11 +4,12 @@
 void main()
 {
 	QInt a, b, c, d;
-	a.scanQInt("100011111111000000000000000111111111001000000110000111", 2);
-	a.printQInt(10);
-	a.printQInt(16);
-	b.scanQInt("-873129580771448538940058586182283", 10);
+	a.scanQInt("10", 10);
+	a.printQInt(2);
+	b.scanQInt("5", 10);
 	b.printQInt(2);
+	c = a * b;
+	c.printQInt(2);
 	cout << endl;
 	system("pause");
 }

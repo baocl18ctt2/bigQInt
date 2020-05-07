@@ -305,3 +305,293 @@ void QInt::mergeByFourBit(string a, string& b)
 		remainder = remainder / 16;
 	}
 }
+
+QInt QInt::operator+(const QInt& A)
+{
+	QInt result;
+	bool biennho = 0;
+	for (int i = 0; i < QINT_SIZE *32;i++)
+	{
+		int temp = (*this).getBit(i) + A.getBit(i) + biennho;
+		switch (temp)
+		{
+		case 0:
+		{
+			result.setBit(i, 0);
+			biennho = 0;
+			break;
+		}
+		case 1:
+		{
+			result.setBit(i, 1);
+			biennho = 0;
+			break;
+		}
+		case 2:
+		{
+			result.setBit(i, 0);
+			biennho = 1;
+			break;
+		}
+		case 3:
+		{
+			result.setBit(i, 1);
+			biennho = 1;
+			break;
+		}
+		}
+	}
+	bool bitfirst = (*this).isNegative();
+	bool bitfirst1 = A.isNegative();
+	if (bitfirst1 + bitfirst != 1 && result.isNegative() != bitfirst)
+		throw "OverFlow.";
+	return result;
+}
+QInt QInt::operator-(const QInt& b)
+{
+	QInt temp = b;
+	QInt temp1;
+	temp1.scanQInt("1", 10);
+	if (b.isNegative() == false)
+	{
+		temp = ~temp;
+		temp = temp + temp1;
+
+	}
+	else
+	{
+		temp = temp - temp1;
+		temp = ~temp;
+	}
+	QInt result = *this + temp;
+	return result;
+}
+
+QInt QInt::operator*(const QInt& B)
+{
+	QInt Q = *this;
+	bool bienNho = 0;
+	QInt A;
+	int n = 128;
+	while (n > 0)
+	{
+		if (Q.getBit(0) == 0 && bienNho == 1)
+		{
+			A = A + B;
+		}
+		else if (Q.getBit(0) == 1 && bienNho == 0)
+		{
+			A = A - B;
+		}
+		// shiftRight Q,A,bienNho
+		bienNho = Q.getBit(0);
+		Q = Q >> 1;
+		Q.setBit(127, A.getBit(0));
+		A = A >> 1;
+		n--;
+	}
+	return Q;
+}
+
+QInt QInt::operator/(const QInt& x)
+{
+	QInt Q = *this;
+	QInt M = x;
+	QInt A;
+	if (*this == A)
+	{
+		return A;
+	}
+	bool checkNegative = (this->isNegative() ^ M.isNegative()); // kiem tra 2 so co trai dau ko
+	QInt temp;
+	temp.scanQInt("1", 10);
+	if (Q.isNegative())
+	{
+		Q = ~(Q - temp);
+	}
+	if (M.isNegative())
+	{
+		M = ~(M - temp);
+	}
+	int k = 128;
+	while (k > 0)
+	{
+		A = A << 1;
+		A.setBit(0, Q.getBit(127));
+		Q = Q << 1;
+		A = A - M;
+		if (A.isNegative())
+		{
+			A = A + M;
+			Q.setBit(0, 0);
+		}
+		else
+		{
+			Q.setBit(0, 1);
+		}
+		k--;
+	}
+	if (checkNegative == true)
+	{
+		Q = ~Q + temp;
+	}
+	return Q;
+}
+
+QInt QInt::operator&(const QInt& x)
+{
+	QInt temp;
+	for (int i = 0; i < QINT_SIZE; ++i)
+	{
+		temp.arr[i] = this->arr[i] & x.arr[i];
+	}
+	return temp;
+}
+
+QInt QInt::operator|(const QInt& x)
+{
+	QInt temp;
+	for (int i = 0; i < 4; i++)
+	{
+		temp.arr[i] = this->arr[i] | x.arr[i];
+	}
+	return temp;
+}
+
+QInt QInt::operator^(const QInt& x)
+{
+	QInt temp;
+	for (int i = 0; i < 4; i++)
+	{
+		temp.arr[i] = this->arr[i] ^ x.arr[i];
+	}
+	return temp;
+}
+
+QInt QInt::operator~()
+{
+	QInt temp;
+	for (int i = 0; i < 4; ++i)
+	{
+		temp.arr[i] = ~this->arr[i];
+	}
+	return temp;
+}
+
+bool QInt::operator==(const QInt& x)
+{
+	if (this == &x)
+		return true;
+	for (int i = 0; i < QINT_SIZE; ++i)
+	{
+		if (this->arr[i] != x.arr[i])
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool QInt::operator!=(const QInt& x)
+{
+	return (*this == x);
+}
+
+QInt& QInt::operator=(const QInt& x)
+{
+	for (int i = 0; i < QINT_SIZE; ++i)
+	{
+		this->arr[i] = x.arr[i];
+	}
+	return *this;
+}
+
+bool QInt::operator<(const QInt& x)
+{
+	if (*this == x)
+		return false;
+	bool A = this->isNegative();
+	bool B = x.isNegative();
+	if ((A + B) == 1)
+	{
+		if (A)
+			return true;
+		return false;
+	}
+	for (int i = 126; i >= 0; i--)
+	{
+		if (this->getBit(i) > x.getBit(i))
+		{
+			return false;
+		}
+		else if (this->getBit(i) < x.getBit(i))
+		{
+			return true;
+		}
+	}
+}
+
+bool QInt::operator>(const QInt& x)
+{
+	return !((*this < x) ^ (*this == x));
+
+}
+
+bool QInt::operator<=(const QInt& x)
+{
+	return (!(*this > x));
+}
+
+bool QInt::operator>=(const QInt& x)
+{
+	return (!(*this < x));
+}
+QInt QInt::operator<<(int x)
+{
+	QInt temp;
+	for (int i = 127; i >= x; i--) {
+		temp.setBit(i, this->getBit(i - x));
+	}
+
+	return temp;
+}
+QInt QInt::operator>>(int x)
+{
+	QInt temp;
+	for (int i = 127; i > 127 - x; i--)
+		temp.setBit(i, this->getBit(127));
+	for (int i = 127 - x; i >= 0; i--)
+		temp.setBit(i, this->getBit(i + x));
+	return temp;
+}
+QInt QInt::rol(int x)
+{
+	for (int i = 0; i < x; i++)
+		*this = this->rol();
+	return *this;
+}
+
+QInt QInt::ror(int x)
+{
+	for (int i = 0; i < x; i++)
+		*this = this->ror();
+	return *this;
+}
+
+QInt QInt::rol()
+{
+	QInt temp;
+	for (int i = 127; i >= 1; i--)
+		temp.setBit(i, this->getBit(i - 1));
+	temp.setBit(0, this->getBit(127));
+	return temp;
+}
+
+QInt QInt::ror()
+{
+	QInt temp;
+	temp.setBit(127, this->getBit(0));
+	for (int i = 126; i >= 0; i--)
+		temp.setBit(i, this->getBit(i + 1));
+	return temp;
+}
