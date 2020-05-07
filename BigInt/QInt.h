@@ -48,8 +48,6 @@ public:
 	bool operator <=(const QInt&);
 	bool operator >= (const QInt&);
 
-	
-
 	QInt operator <<(int);
 	QInt operator >>(int);
 
