@@ -62,14 +62,31 @@ void QInt::scanQInt(string src, int base)
 	}
 }
 
-//Xuat QInt theo co so 2
+//Xuat QInt theo co so 
 void QInt::printQInt(int base)
 {
 	string res;
-	res = CreateBinStr();
-	while (res[0] == '0' && res.length() > 1)
-		res.erase(0, 1);
-	cout << res;
+	switch (base)
+	{
+	case 2:
+	{
+		res = CreateBinStr();
+		while (res[0] == '0' && res.length() > 1)
+			res.erase(0, 1);
+		cout << res << endl;
+		break;
+	}
+	case 10:
+	{
+		cout << binToDec(*this) << endl;
+		break;
+	}
+	case 16:
+	{
+		cout << binToHex(*this) << endl;
+		break;
+	}
+	}
 }
 
 //Kiem tra so am
