@@ -411,3 +411,49 @@ string Qfloat::DecToBin(Qfloat x)
 	return ketqua;
 }
 
+void Qfloat::printAllQfloat()
+{
+	cout << "\n\n\t|--------------------------------------------------------" << endl;
+	cout << "\t|" << endl;
+	cout << left << setw(10) << "\t|	1. DEC:   " << setw(10) << PrintQfloat(10) << endl;
+	cout << left << setw(10) << "\t|	2. BIN:   " << setw(10) << PrintQfloat(2) << endl;
+	cout << "\t|" << endl;
+	cout << "\t|---------------------------------------------------------" << endl;
+}
+
+void Qfloat::Menu2()
+{
+	int select;
+	while (true)
+	{
+		system("cls");
+		cout << "\n\t ****************************" << endl;
+		cout << " \t ----- CALCULATOR QINT ----- " << endl;
+		cout << "\t 1. DEC" << endl;
+		cout << "\t 2. BIN" << endl;
+		cout << "\t 0. EXIT" << endl;
+		cout << " ** please select: ";
+		cin >> select;
+		string ss;
+		if (select == 1)
+		{
+			cout << "\n -- Nhap chuoi: ";
+			cin.ignore();
+			getline(cin, ss);
+			ScanQfloat(ss, 10);
+			printAllQfloat();
+			system("pause");
+		}
+		if (select == 2)
+		{
+			cout << "\n -- Nhap chuoi: ";
+			cin.ignore();
+			getline(cin, ss);
+			ScanQfloat(ss, 2);
+			printAllQfloat();
+			system("pause");
+		}
+		if (select == 0)
+			break;
+	}
+}

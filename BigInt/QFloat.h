@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include <iomanip>
 #include <iostream>
 using namespace std;
 #include <string>
@@ -32,5 +32,8 @@ public:
 	string PrintQfloat(int);
 	Qfloat BinToDec(string);
 	string DecToBin(Qfloat);
+
+	void printAllQfloat();
+	void Menu2();
 };
 
