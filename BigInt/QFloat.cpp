@@ -17,6 +17,11 @@ void Qfloat::setBit1(int& X, int i)
 	X = (X | (1 << (31 - i)));
 }
 
+void Qfloat::setBit0(int& X, int i)
+{
+	X = (X & (0 << (31 - i)));
+}
+
 int Qfloat::GetBit(int X, int i)
 {
 	return (X >> (31 - i)) & 1;
@@ -74,7 +79,7 @@ void Qfloat::stringToBit2(string str, int daybit[]) // Biến đổi phần th�
 	int dem = 0;
 	int m = 0;
 	for (int i = 0; i < 112; i++) {
-		if (sothapphan[0] >= 5) {// Gán bit bằng 1 nếu số đâu >= 5 (sử dụng phương pháp nhan hai)
+		if (sothapphan[0] >= 5) {// Gán bit bằng 1 nếu số đầu >= 5 (Vì khi x2 sẽ lớn hơn 1)
 			daybit[i] = 1;
 		}
 		dem = 0, m = 0;
@@ -134,6 +139,10 @@ void Qfloat::chuanHoaDayBit(int daybit[], int daybit1[], int daybit2[], int& E)/
 		int j = 0;
 		for (j = 0; j < 112; j++) {
 			if (daybit2[j] == 1)break;
+		}
+		if (j == 112) {// Nếu phần thập phân cũng bằng 0
+			E = -16383;// Để phần Exponent = 0;
+			return;
 		}
 		E = -j - 1;
 		for (int l = j + 1; l < 112; l++)
@@ -196,6 +205,22 @@ void Qfloat::ScanQfloat(string str, int base)// In chuỗi số chấm động
 		for (int i = 16; i < 128; i++) {
 			if (daybit[i - 16] == 1) {
 				setBit1(data[i / 32], i % 32); // Gán dãy bít vào QInt
+			}
+		}
+		if (daybit[113] == 1) {// Làm tròn số nếu nhiều hơn 112 bit
+			if (str.compare(0, 1, "-") == 0) {
+				int i = 112;
+				while (daybit[i] == 0) {
+					setBit1(data[(i + 15) / 32], (i + 15) % 32);
+				}
+				setBit0(data[(i + 15) / 32], (i + 15) % 32);
+			}
+			else {
+				int i = 112;
+				while (daybit[i] == 1) {
+					setBit0(data[(i + 15) / 32], (i + 15) % 32);
+				}
+				setBit1(data[(i + 15) / 32], (i + 15) % 32);
 			}
 		}
 	}

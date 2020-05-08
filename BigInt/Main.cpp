@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 #include "QInt.h"
+#include "QFloat.h"
 #include "Console.h"
 #include "conio.h"
 #define MAUNEN 176
