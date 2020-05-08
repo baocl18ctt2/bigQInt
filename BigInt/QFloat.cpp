@@ -437,20 +437,22 @@ void Qfloat::Menu2()
 		string ss;
 		if (select == 1)
 		{
+			Qfloat q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			ScanQfloat(ss, 10);
-			printAllQfloat();
+			q.ScanQfloat(ss, 10);
+			q.printAllQfloat();
 			system("pause");
 		}
 		if (select == 2)
 		{
+			Qfloat q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			ScanQfloat(ss, 2);
-			printAllQfloat();
+			q.ScanQfloat(ss, 2);
+			q.printAllQfloat();
 			system("pause");
 		}
 		if (select == 0)

@@ -629,29 +629,32 @@ void QInt::Menu1()
 		string ss;
 		if (select == 1)
 		{
+			QInt q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			QInt::scanQInt(ss, 16);
-			printAllQInt();
+			q.scanQInt(ss, 16);
+			q.printAllQInt();
 			system("pause");
 		}
 		if (select == 2)
 		{
+			QInt q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			QInt::scanQInt(ss, 10);
-			printAllQInt();
+			q.scanQInt(ss, 10);
+			q.printAllQInt();
 			system("pause");
 		}
 		if (select == 3)
 		{
+			QInt q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			QInt::scanQInt(ss, 2);
-			printAllQInt();
+			q.scanQInt(ss, 2);
+			q.printAllQInt();
 			system("pause");
 		}
 		if (select == 0)
