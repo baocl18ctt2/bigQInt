@@ -73,17 +73,17 @@ void QInt::printQInt(int base)
 		res = CreateBinStr();
 		while (res[0] == '0' && res.length() > 1)
 			res.erase(0, 1);
-		cout << res << endl;
+		cout << left << setw(10) << "\t|	3. BIN:   " << setw(10) << res << endl;
 		break;
 	}
 	case 10:
 	{
-		cout << binToDec(*this) << endl;
+		cout << left << setw(10) << "\t|	2. DEC:   " << setw(10) << binToDec(*this) << endl;
 		break;
 	}
 	case 16:
 	{
-		cout << binToHex(*this) << endl;
+		cout << left << setw(10) << "\t|	1. HEX:   " << setw(10) << binToHex(*this) << endl;
 		break;
 	}
 	}
@@ -292,18 +292,22 @@ void QInt::mergeByFourBit(string a, string& b)
 		k++;
 	}
 	int m;
+	if (remainder == 0)
+		b += remainder + '0';
 	while (remainder > 0)
 	{
 		m = remainder % 16;
 		if (m >= 10) {
 			b += (char)(m + CHAR_55);
-			
+
 		}
 		else {
 			b += (char)(m + CHAR_48);
 		}
 		remainder = remainder / 16;
 	}
+	
+
 }
 
 QInt QInt::operator+(const QInt& A)
@@ -578,6 +582,8 @@ QInt QInt::ror(int x)
 	return *this;
 }
 
+
+
 QInt QInt::rol()
 {
 	QInt temp;
@@ -594,4 +600,61 @@ QInt QInt::ror()
 	for (int i = 126; i >= 0; i--)
 		temp.setBit(i, this->getBit(i + 1));
 	return temp;
+}
+void QInt::printAllQInt()
+{
+	cout << "\n\n\t|--------------------------------------------------------" << endl;
+	cout << "\t|" << endl;
+	QInt::printQInt(16);
+	QInt::printQInt(10);
+	QInt::printQInt(2);
+	cout << "\t|" << endl;
+	cout << "\t|---------------------------------------------------------" << endl;
+}
+
+void QInt::Menu1()
+{
+	int select;
+	while (true)
+	{
+		system("cls");
+		cout << "\n\t ****************************" << endl;
+		cout << " \t ----- CALCULATOR QINT ----- " << endl;
+		cout << "\t 1. HEX" << endl;
+		cout << "\t 2. DEC" << endl;
+		cout << "\t 3. BIN" << endl;
+		cout << "\t 0. EXIT" << endl;
+		cout << " ** please select: ";
+		cin >> select;
+		string ss;
+		if (select == 1)
+		{
+			cout << "\n -- Nhap chuoi: ";
+			cin.ignore();
+			getline(cin, ss);
+			QInt::scanQInt(ss, 16);
+			printAllQInt();
+			system("pause");
+		}
+		if (select == 2)
+		{
+			cout << "\n -- Nhap chuoi: ";
+			cin.ignore();
+			getline(cin, ss);
+			QInt::scanQInt(ss, 10);
+			printAllQInt();
+			system("pause");
+		}
+		if (select == 3)
+		{
+			cout << "\n -- Nhap chuoi: ";
+			cin.ignore();
+			getline(cin, ss);
+			QInt::scanQInt(ss, 2);
+			printAllQInt();
+			system("pause");
+		}
+		if (select == 0)
+			break;
+	}
 }

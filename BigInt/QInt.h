@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <bitset>
+#include <iomanip>
 using namespace std;
 
 #define QINT_SIZE 4
@@ -55,5 +56,7 @@ public:
 	QInt ror();
 	QInt rol(int);
 	QInt ror(int);
-
+	void printAllQInt();
+	void Menu1();
 };
+

@@ -1,2 +1,4 @@
 ﻿  Main.cpp
+D:\KTMT&HN\Project\BigInt\Main.cpp(118,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+D:\KTMT&HN\Project\BigInt\Main.cpp(31): warning C4715: 'key': not all control paths return a value
   BigInt.vcxproj -> D:\KTMT&HN\Project\Debug\BigInt.exe
