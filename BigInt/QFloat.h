@@ -1,4 +1,6 @@
 #pragma once
+
+#include <iomanip>
 #include <iostream>
 using namespace std;
 #include <string>
@@ -12,6 +14,7 @@ public:
 	Qfloat();
 	~Qfloat();
 	void setBit1(int& X, int i);
+	void setBit0(int& X, int i);
 	int GetBit(int X, int i);
 	void setDayBitKhong(int daybit[], int n);
 	void stringToBit(string str, int daybit[]);
@@ -29,5 +32,8 @@ public:
 	string PrintQfloat(int);
 	Qfloat BinToDec(string);
 	string DecToBin(Qfloat);
+
+	void printAllQfloat();
+	void Menu2();
 };
 

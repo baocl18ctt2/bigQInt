@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 ﻿  BigInt.vcxproj -> D:\KTMT&HN\Project\Debug\BigInt.exe
+=======
+﻿  Main.cpp
+D:\bigQInt\BigInt\Main.cpp(124,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+D:\bigQInt\BigInt\Main.cpp(35): warning C4715: 'key': not all control paths return a value
+  LINK : D:\bigQInt\Debug\BigInt.exe not found or not built by the last incremental link; performing full link
+  BigInt.vcxproj -> D:\bigQInt\Debug\BigInt.exe
+>>>>>>> 4b9cabe86202b35271ccd932082081f7cfac896f

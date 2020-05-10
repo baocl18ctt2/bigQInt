@@ -2,8 +2,12 @@
 #include <iostream>
 using namespace std;
 #include "QInt.h"
+#include "QFloat.h"
 #include "Console.h"
 #include "conio.h"
+#include <vector>
+#include <sstream>
+
 #define MAUNEN 176
 #define MAUCHU 125
 typedef char str[31];
@@ -33,6 +37,7 @@ void PrintMenu()
 {
 	int select;
 	QInt a;
+	Qfloat b;
 	while (true)
 	{
 		system("cls");
@@ -46,12 +51,14 @@ void PrintMenu()
 		if (select == 1)
 		{
 			system("cls");
-			a.Menu1();
+			a.ConvertAllToQint();
 			system("pause");
 		}
 		if (select == 2)
 		{
-
+			system("cls");
+			b.Menu2();
+			system("pause");
 		}
 		if (select == 0)
 			break;
@@ -67,7 +74,6 @@ int menu(str thaotac[], int n)
 	while (1)
 	{
 		clrscr();
-		cout << "\n\t---------------------------" << endl;
 		
 		for (int i = 0; i < n; i++)
 		{

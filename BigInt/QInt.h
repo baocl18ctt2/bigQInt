@@ -3,6 +3,8 @@
 #include <string>
 #include <bitset>
 #include <iomanip>
+#include <vector>
+#include <sstream>
 using namespace std;
 
 #define QINT_SIZE 4
@@ -56,7 +58,9 @@ public:
 	QInt ror();
 	QInt rol(int);
 	QInt ror(int);
-	void printAllQInt();
-	void Menu1();
+	void printAllQInt(QInt& x);
+	QInt CaculatorQint(string ss, int base);
+	void ConvertAllToQint();
+	bool CompareTwoString();
 };
 

@@ -1,4 +1,4 @@
-#include "QInt.h"
+﻿#include "QInt.h"
 
 
 QInt::QInt()
@@ -601,18 +601,18 @@ QInt QInt::ror()
 		temp.setBit(i, this->getBit(i + 1));
 	return temp;
 }
-void QInt::printAllQInt()
+void QInt::printAllQInt(QInt &x)
 {
 	cout << "\n\n\t|--------------------------------------------------------" << endl;
 	cout << "\t|" << endl;
-	QInt::printQInt(16);
-	QInt::printQInt(10);
-	QInt::printQInt(2);
+	x.printQInt(16);
+	x.printQInt(10);
+	x.printQInt(2);
 	cout << "\t|" << endl;
 	cout << "\t|---------------------------------------------------------" << endl;
 }
 
-void QInt::Menu1()
+void QInt::ConvertAllToQint()
 {
 	int select;
 	while (true)
@@ -629,32 +629,110 @@ void QInt::Menu1()
 		string ss;
 		if (select == 1)
 		{
+			QInt q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			QInt::scanQInt(ss, 16);
-			printAllQInt();
+			q.CaculatorQint(ss, 16);
+			QInt::printAllQInt(q);
 			system("pause");
 		}
 		if (select == 2)
 		{
+			QInt q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			QInt::scanQInt(ss, 10);
-			printAllQInt();
+			q.CaculatorQint(ss, 10);
+			QInt::printAllQInt(q);
 			system("pause");
 		}
 		if (select == 3)
 		{
+			QInt q;
 			cout << "\n -- Nhap chuoi: ";
 			cin.ignore();
 			getline(cin, ss);
-			QInt::scanQInt(ss, 2);
-			printAllQInt();
+			q.CaculatorQint(ss, 2);
+			QInt::printAllQInt(q);
 			system("pause");
 		}
 		if (select == 0)
 			break;
 	}
+}
+
+QInt QInt::CaculatorQint(string ss, int base)
+{
+	string temp = " ";
+	size_t pos = 0;
+	string word;
+	vector<string> src;
+	while ((pos = ss.find(temp)) != string::npos)
+	{
+		word = ss.substr(0, pos);
+		src.push_back(word);
+		ss.erase(0, pos + temp.length());
+	}
+	src.push_back(ss);
+	QInt temp1;
+	(*this).scanQInt(src[0], base);
+	for (int i = 0; i < src.size(); i++)
+	{
+		if (src[i] == "+")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			(*this) = (*this) + temp1;
+		}
+		if (src[i] == "-")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			(*this) = (*this) - temp1;
+		}
+		if (src[i] == "*")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			(*this) = (*this) * temp1;
+		}
+		if (src[i] == "&")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			(*this) = (*this) & temp1;
+		}
+		if (src[i] == "|")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			(*this) = (*this) | temp1;
+		}
+		if (src[i] == "^")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			(*this) = (*this) / temp1;
+		}
+		if (src[i] == "~")
+		{
+			return ~(*this);
+		}
+		if (src[i] == "<<")
+		{
+			string myString = src[i + 1];
+			stringstream geek(myString);
+			int x = 0;
+			geek >> x;
+			(*this) = (*this) << x;
+		}
+		if (src[i] == ">>")
+		{
+			string myString = src[i + 1];
+			stringstream geek(myString);
+			int x = 0;
+			geek >> x;
+			(*this) = (*this) >> x;
+		}
+	}
+	return (*this);
+}
+bool QInt::CompareTwoString()
+{
+	return false;
 }

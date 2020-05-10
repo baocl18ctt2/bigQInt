@@ -17,6 +17,11 @@ void Qfloat::setBit1(int& X, int i)
 	X = (X | (1 << (31 - i)));
 }
 
+void Qfloat::setBit0(int& X, int i)
+{
+	X = (X & (0 << (31 - i)));
+}
+
 int Qfloat::GetBit(int X, int i)
 {
 	return (X >> (31 - i)) & 1;
@@ -74,7 +79,7 @@ void Qfloat::stringToBit2(string str, int daybit[]) // Biến đổi phần th�
 	int dem = 0;
 	int m = 0;
 	for (int i = 0; i < 112; i++) {
-		if (sothapphan[0] >= 5) {// Gán bit bằng 1 nếu số đâu >= 5 (sử dụng phương pháp nhan hai)
+		if (sothapphan[0] >= 5) {// Gán bit bằng 1 nếu số đầu >= 5 (Vì khi x2 sẽ lớn hơn 1)
 			daybit[i] = 1;
 		}
 		dem = 0, m = 0;
@@ -134,6 +139,10 @@ void Qfloat::chuanHoaDayBit(int daybit[], int daybit1[], int daybit2[], int& E)/
 		int j = 0;
 		for (j = 0; j < 112; j++) {
 			if (daybit2[j] == 1)break;
+		}
+		if (j == 112) {// Nếu phần thập phân cũng bằng 0
+			E = -16383;// Để phần Exponent = 0;
+			return;
 		}
 		E = -j - 1;
 		for (int l = j + 1; l < 112; l++)
@@ -196,6 +205,22 @@ void Qfloat::ScanQfloat(string str, int base)// In chuỗi số chấm động
 		for (int i = 16; i < 128; i++) {
 			if (daybit[i - 16] == 1) {
 				setBit1(data[i / 32], i % 32); // Gán dãy bít vào QInt
+			}
+		}
+		if (daybit[113] == 1) {// Làm tròn số nếu nhiều hơn 112 bit
+			if (str.compare(0, 1, "-") == 0) {
+				int i = 112;
+				while (daybit[i] == 0) {
+					setBit1(data[(i + 15) / 32], (i + 15) % 32);
+				}
+				setBit0(data[(i + 15) / 32], (i + 15) % 32);
+			}
+			else {
+				int i = 112;
+				while (daybit[i] == 1) {
+					setBit0(data[(i + 15) / 32], (i + 15) % 32);
+				}
+				setBit1(data[(i + 15) / 32], (i + 15) % 32);
 			}
 		}
 	}
@@ -386,3 +411,49 @@ string Qfloat::DecToBin(Qfloat x)
 	return ketqua;
 }
 
+void Qfloat::printAllQfloat()
+{
+	cout << "\n\n\t|--------------------------------------------------------" << endl;
+	cout << "\t|" << endl;
+	cout << left << setw(10) << "\t|	1. DEC:   " << setw(10) << PrintQfloat(10) << endl;
+	cout << left << setw(10) << "\t|	2. BIN:   " << setw(10) << PrintQfloat(2) << endl;
+	cout << "\t|" << endl;
+	cout << "\t|---------------------------------------------------------" << endl;
+}
+
+void Qfloat::Menu2()
+{
+	int select;
+	while (true)
+	{
+		system("cls");
+		cout << "\n\t ****************************" << endl;
+		cout << " \t ----- CALCULATOR QINT ----- " << endl;
+		cout << "\t 1. DEC" << endl;
+		cout << "\t 2. BIN" << endl;
+		cout << "\t 0. EXIT" << endl;
+		cout << " ** please select: ";
+		cin >> select;
+		string ss;
+		if (select == 1)
+		{
+			cout << "\n -- Nhap chuoi: ";
+			cin.ignore();
+			getline(cin, ss);
+			ScanQfloat(ss, 10);
+			printAllQfloat();
+			system("pause");
+		}
+		if (select == 2)
+		{
+			cout << "\n -- Nhap chuoi: ";
+			cin.ignore();
+			getline(cin, ss);
+			ScanQfloat(ss, 2);
+			printAllQfloat();
+			system("pause");
+		}
+		if (select == 0)
+			break;
+	}
+}
