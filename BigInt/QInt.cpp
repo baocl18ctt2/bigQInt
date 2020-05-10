@@ -694,6 +694,11 @@ QInt QInt::CaculatorQint(string ss, int base)
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) * temp1;
 		}
+		if (src[i] == "/")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			(*this) = (*this) / temp1;
+		}
 		if (src[i] == "&")
 		{
 			temp1.scanQInt(src[i + 1], base);
@@ -729,10 +734,60 @@ QInt QInt::CaculatorQint(string ss, int base)
 			geek >> x;
 			(*this) = (*this) >> x;
 		}
+		if (src[i] == "<")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			if ((*this) < temp1)
+				cout << "\n\t *** Ket Qua: TRUE" << endl;
+			else
+				cout << "\n\t *** Ket Qua: FALSE" << endl;
+			(*this).scanQInt("0",base);
+		}
+		if (src[i] == ">")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			if ((*this) > temp1)
+				cout << "\n\t *** Ket Qua: TRUE" << endl;
+			else
+				cout << "\n\t *** Ket Qua: FALSE" << endl;
+			(*this).scanQInt("0", base);
+		}
+		if (src[i] == "<=")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			if ((*this) <= temp1)
+				cout << "\n\t *** Ket Qua: TRUE" << endl;
+			else
+				cout << "\n\t *** Ket Qua: FALSE" << endl;
+			(*this).scanQInt("0", base);
+		}
+		if (src[i] == ">=")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			if ((*this) >= temp1)
+				cout << "\n\t *** Ket Qua: TRUE" << endl;
+			else
+				cout << "\n\t *** Ket Qua: FALSE" << endl;
+			(*this).scanQInt("0", base);
+		}
+		if (src[i] == "=")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			if ((*this) == temp1)
+				cout << "\n\t *** Ket Qua: TRUE" << endl;
+			else
+				cout << "\n\t *** Ket Qua: FALSE" << endl;
+			(*this).scanQInt("0", base);
+		}
+		if (src[i] == "!=")
+		{
+			temp1.scanQInt(src[i + 1], base);
+			if ((*this) != temp1)
+				cout << "\n\t *** Ket Qua: TRUE" << endl;
+			else
+				cout << "\n\t *** Ket Qua: FALSE" << endl;
+			(*this).scanQInt("0", base);
+		}
 	}
 	return (*this);
-}
-bool QInt::CompareTwoString()
-{
-	return false;
 }

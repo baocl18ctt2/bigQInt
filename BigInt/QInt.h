@@ -61,6 +61,5 @@ public:
 	void printAllQInt(QInt& x);
 	QInt CaculatorQint(string ss, int base);
 	void ConvertAllToQint();
-	bool CompareTwoString();
 };
 

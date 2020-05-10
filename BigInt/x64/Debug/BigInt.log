@@ -1,8 +1,5 @@
-﻿  QFloat.cpp
-D:\KTMT&HN\Project\BigInt\QFloat.cpp(40,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QFloat.cpp(72,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QFloat.cpp(107,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QFloat.cpp(233,13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  Main.cpp
+D:\KTMT&HN\Project\BigInt\Main.cpp(124,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
   QInt.cpp
 D:\KTMT&HN\Project\BigInt\QInt.cpp(46,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 D:\KTMT&HN\Project\BigInt\QInt.cpp(191,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
@@ -13,5 +10,5 @@ D:\KTMT&HN\Project\BigInt\QInt.cpp(289,29): warning C4267: 'initializing': conve
 D:\KTMT&HN\Project\BigInt\QInt.cpp(291,40): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
   Generating Code...
 D:\KTMT&HN\Project\BigInt\QInt.cpp(536): warning C4715: 'QInt::operator<': not all control paths return a value
-  LINK : D:\KTMT&HN\Project\x64\Debug\BigInt.exe not found or not built by the last incremental link; performing full link
+D:\KTMT&HN\Project\BigInt\Main.cpp(35): warning C4715: 'key': not all control paths return a value
   BigInt.vcxproj -> D:\KTMT&HN\Project\x64\Debug\BigInt.exe
