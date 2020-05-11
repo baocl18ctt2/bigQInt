@@ -105,7 +105,7 @@ string QInt::CreateBinStr() const
 	}
 	return res;
 }
-
+//chia chuoi cho 2
 string divByTwo(string src)
 {
 	string res = "";
@@ -125,6 +125,7 @@ string divByTwo(string src)
 		res.erase(0, 1);
 	return res;
 }
+//chuyen so am sang dang bu 2
 QInt QInt::toInverse() const
 {
 	//Dao bit
@@ -146,7 +147,7 @@ QInt QInt::toInverse() const
 	}
 	return res;
 }
-
+//chuyen thap phan sang nhi phan
 QInt QInt::decToBin(string src)
 {
 	QInt res;
@@ -176,6 +177,7 @@ QInt QInt::decToBin(string src)
 	return res;
 }
 
+//chuyen thap luc phan sang nhi phan
 QInt QInt::hexToBin(string src)
 {
 	bool isNegative = false;
@@ -196,7 +198,7 @@ QInt QInt::hexToBin(string src)
 		res = res.toInverse();
 	return res;
 }
-
+//kiem tra bang 0
 bool QInt::IsZero() const
 {
 	for (int i = 0; i < QINT_SIZE; i++)
@@ -206,7 +208,7 @@ bool QInt::IsZero() const
 	}
 	return true;
 }
-
+//nhan chuoi voi 2
 string QInt::multipleByTwo(string src, int add)
 {
 	string res = "";
@@ -226,6 +228,7 @@ string QInt::multipleByTwo(string src, int add)
 	reverse(res.begin(), res.end());
 	return res;
 }
+//nhi phan sang thap phan
 string QInt::binToDec(const QInt& src)
 {
 	string result;
@@ -252,6 +255,7 @@ string QInt::binToDec(const QInt& src)
 		result = '-' + result;
 	return result;
 }
+//nhi phan sang thap luc phan
 string QInt::binToHex(const QInt& src)
 {
 	string result = "";
@@ -281,7 +285,7 @@ string QInt::binToHex(const QInt& src)
 		result.erase(0, 1);
 	return result;
 }
-
+//nhom 4 bit
 void QInt::mergeByFourBit(string a, string& b)
 {
 	int remainder = 0;
