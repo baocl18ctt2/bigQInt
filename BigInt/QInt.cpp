@@ -734,6 +734,22 @@ QInt QInt::CaculatorQint(string ss, int base)
 			geek >> x;
 			(*this) = (*this) >> x;
 		}
+		if (src[i] == "ror")
+		{
+			string myString = src[i + 1];
+			stringstream geek(myString);
+			int x = 0;
+			geek >> x;
+			(*this) = (*this).ror(x);
+		}
+		if (src[i] == "rol")
+		{
+			string myString = src[i + 1];
+			stringstream geek(myString);
+			int x = 0;
+			geek >> x;
+			(*this) = (*this).rol(x);
+		}
 		if (src[i] == "<")
 		{
 			temp1.scanQInt(src[i + 1], base);
