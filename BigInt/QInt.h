@@ -19,20 +19,20 @@ private:
 public:
 	QInt();
 	~QInt();
-	void setBit(int pos, bool value);
-	bool getBit(int pos) const;
-	bool IsZero() const;
-	void scanQInt(string src, int base);
-	QInt toInverse() const;
-	string CreateBinStr() const;
-	void printQInt(int base);
-	bool isNegative() const;
-	QInt decToBin(string src);
-	QInt hexToBin(string src);
-	string multipleByTwo(string src, int add);
-	string binToDec(const QInt& src);
-	string binToHex(const QInt& src);
-	void mergeByFourBit(string a, string& b);
+	void setBit(int pos, bool value);	// set bit 1 va 0
+	bool getBit(int pos) const;			//lay gia tri 1 bit
+	bool IsZero() const;				//kiem tra bang 0
+	void scanQInt(string src, int base);//doc tu chuoi 
+	QInt toInverse() const;				//chuyen so am sang dang bu 2
+	string CreateBinStr() const;		//tao chuoi tu 1 day bit cho truoc
+	void printQInt(int base);			//in man hinh gia tri QInt
+	bool isNegative() const;			//kiem tra so am
+	QInt decToBin(string src);			//thap phan sang nhi phan
+	QInt hexToBin(string src);			//thap luc phan sang nhi phan
+	string multipleByTwo(string src, int add);//nhan mot chuoi voi 2
+	string binToDec(const QInt& src);	//nhi phan sang thap phan
+	string binToHex(const QInt& src);	//nhi phan sang thap luc phan
+	void mergeByFourBit(string a, string& b);// nhom 4 bit
 	QInt operator & (const QInt&);
 	QInt operator | (const QInt&);
 	QInt operator ^ (const QInt&);

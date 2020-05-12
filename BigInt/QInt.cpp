@@ -105,7 +105,7 @@ string QInt::CreateBinStr() const
 	}
 	return res;
 }
-// Chuoi so chia 2 
+//chia chuoi cho 2
 string divByTwo(string src)
 {
 	string res = "";
@@ -177,6 +177,7 @@ QInt QInt::decToBin(string src)
 	return res;
 }
 // Chuyen tu he 16 sang he 2
+
 QInt QInt::hexToBin(string src)
 {
 	bool isNegative = false;
@@ -207,7 +208,7 @@ bool QInt::IsZero() const
 	}
 	return true;
 }
-// Nhan 2
+//nhan chuoi voi 2
 string QInt::multipleByTwo(string src, int add)
 {
 	string res = "";
@@ -256,6 +257,7 @@ string QInt::binToDec(const QInt& src)
 }
 
 // Chuyen tu he 2 sang he 16
+
 string QInt::binToHex(const QInt& src)
 {
 	string result = "";
@@ -286,6 +288,7 @@ string QInt::binToHex(const QInt& src)
 	return result;
 }
 // Gop 4 bit
+
 void QInt::mergeByFourBit(string a, string& b)
 {
 	int remainder = 0;
