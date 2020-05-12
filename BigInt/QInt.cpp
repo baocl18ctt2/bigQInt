@@ -28,11 +28,11 @@ void QInt::setBit(int pos, bool value)
 	int bitPos = pos % 32;
 	if (value)
 	{
-		this->arr[bytePos] = ((1 << bitPos) | this->arr[bytePos]);
+		this->arr[bytePos] = ((1 << bitPos) | this->arr[bytePos]); // Set bit 1
 	}
 	else
 	{
-		this->arr[bytePos] = ((~(1 << bitPos)) & this->arr[bytePos]);
+		this->arr[bytePos] = ((~(1 << bitPos)) & this->arr[bytePos]); // Set bit 0
 	}
 }
 
@@ -105,7 +105,7 @@ string QInt::CreateBinStr() const
 	}
 	return res;
 }
-
+// Chuoi so chia 2 
 string divByTwo(string src)
 {
 	string res = "";
@@ -125,6 +125,7 @@ string divByTwo(string src)
 		res.erase(0, 1);
 	return res;
 }
+// Chuyen ve dang bu 2
 QInt QInt::toInverse() const
 {
 	//Dao bit
@@ -146,7 +147,7 @@ QInt QInt::toInverse() const
 	}
 	return res;
 }
-
+// Chuyen tu he 10 sang he 2
 QInt QInt::decToBin(string src)
 {
 	QInt res;
@@ -175,7 +176,7 @@ QInt QInt::decToBin(string src)
 	}
 	return res;
 }
-
+// Chuyen tu he 16 sang he 2
 QInt QInt::hexToBin(string src)
 {
 	bool isNegative = false;
@@ -196,7 +197,7 @@ QInt QInt::hexToBin(string src)
 		res = res.toInverse();
 	return res;
 }
-
+// Kiem tra bit dau tien 
 bool QInt::IsZero() const
 {
 	for (int i = 0; i < QINT_SIZE; i++)
@@ -206,7 +207,7 @@ bool QInt::IsZero() const
 	}
 	return true;
 }
-
+// Nhan 2
 string QInt::multipleByTwo(string src, int add)
 {
 	string res = "";
@@ -226,6 +227,7 @@ string QInt::multipleByTwo(string src, int add)
 	reverse(res.begin(), res.end());
 	return res;
 }
+// Chuyen tu he 2 sang he 10
 string QInt::binToDec(const QInt& src)
 {
 	string result;
@@ -252,6 +254,8 @@ string QInt::binToDec(const QInt& src)
 		result = '-' + result;
 	return result;
 }
+
+// Chuyen tu he 2 sang he 16
 string QInt::binToHex(const QInt& src)
 {
 	string result = "";
@@ -281,7 +285,7 @@ string QInt::binToHex(const QInt& src)
 		result.erase(0, 1);
 	return result;
 }
-
+// Gop 4 bit
 void QInt::mergeByFourBit(string a, string& b)
 {
 	int remainder = 0;
@@ -309,7 +313,7 @@ void QInt::mergeByFourBit(string a, string& b)
 	
 
 }
-
+// Phep +
 QInt QInt::operator+(const QInt& A)
 {
 	QInt result;
@@ -351,6 +355,8 @@ QInt QInt::operator+(const QInt& A)
 		throw "OverFlow.";
 	return result;
 }
+
+// Phep -
 QInt QInt::operator-(const QInt& b)
 {
 	QInt temp = b;
@@ -370,7 +376,7 @@ QInt QInt::operator-(const QInt& b)
 	QInt result = *this + temp;
 	return result;
 }
-
+// Phep nhan
 QInt QInt::operator*(const QInt& B)
 {
 	QInt Q = *this;
@@ -396,7 +402,7 @@ QInt QInt::operator*(const QInt& B)
 	}
 	return Q;
 }
-
+// Phep chia
 QInt QInt::operator/(const QInt& x)
 {
 	QInt Q = *this;
@@ -441,7 +447,7 @@ QInt QInt::operator/(const QInt& x)
 	}
 	return Q;
 }
-
+// Phep and
 QInt QInt::operator&(const QInt& x)
 {
 	QInt temp;
@@ -451,7 +457,7 @@ QInt QInt::operator&(const QInt& x)
 	}
 	return temp;
 }
-
+// Phep or
 QInt QInt::operator|(const QInt& x)
 {
 	QInt temp;
@@ -461,7 +467,7 @@ QInt QInt::operator|(const QInt& x)
 	}
 	return temp;
 }
-
+// Phep xor
 QInt QInt::operator^(const QInt& x)
 {
 	QInt temp;
@@ -471,7 +477,7 @@ QInt QInt::operator^(const QInt& x)
 	}
 	return temp;
 }
-
+// Phep not
 QInt QInt::operator~()
 {
 	QInt temp;
@@ -481,7 +487,7 @@ QInt QInt::operator~()
 	}
 	return temp;
 }
-
+// So sanh bang
 bool QInt::operator==(const QInt& x)
 {
 	if (this == &x)
@@ -495,12 +501,12 @@ bool QInt::operator==(const QInt& x)
 	}
 	return true;
 }
-
+// So sanh khac nhau
 bool QInt::operator!=(const QInt& x)
 {
 	return (*this == x);
 }
-
+// Phep gan
 QInt& QInt::operator=(const QInt& x)
 {
 	for (int i = 0; i < QINT_SIZE; ++i)
@@ -509,7 +515,7 @@ QInt& QInt::operator=(const QInt& x)
 	}
 	return *this;
 }
-
+// So sang nho hon
 bool QInt::operator<(const QInt& x)
 {
 	if (*this == x)
@@ -534,22 +540,23 @@ bool QInt::operator<(const QInt& x)
 		}
 	}
 }
-
+// So sanh lon hon
 bool QInt::operator>(const QInt& x)
 {
 	return !((*this < x) ^ (*this == x));
 
 }
-
+// So sanh nho hon hoac bang
 bool QInt::operator<=(const QInt& x)
 {
 	return (!(*this > x));
 }
-
+// So sanh lon hon hoac bang
 bool QInt::operator>=(const QInt& x)
 {
 	return (!(*this < x));
 }
+// Dich x bit sang trai
 QInt QInt::operator<<(int x)
 {
 	QInt temp;
@@ -559,6 +566,7 @@ QInt QInt::operator<<(int x)
 
 	return temp;
 }
+ // dich x bit sang phai
 QInt QInt::operator>>(int x)
 {
 	QInt temp;
@@ -568,21 +576,20 @@ QInt QInt::operator>>(int x)
 		temp.setBit(i, this->getBit(i + x));
 	return temp;
 }
+// xoay trai x lan
 QInt QInt::rol(int x)
 {
 	for (int i = 0; i < x; i++)
 		*this = this->rol();
 	return *this;
 }
-
+// Xoay phai x lan
 QInt QInt::ror(int x)
 {
 	for (int i = 0; i < x; i++)
 		*this = this->ror();
 	return *this;
 }
-
-
 
 QInt QInt::rol()
 {
@@ -601,6 +608,7 @@ QInt QInt::ror()
 		temp.setBit(i, this->getBit(i + 1));
 	return temp;
 }
+
 void QInt::printAllQInt(QInt &x)
 {
 	cout << "\n\n\t|--------------------------------------------------------" << endl;
@@ -661,7 +669,7 @@ void QInt::ConvertAllToQint()
 			break;
 	}
 }
-
+// Tinh toan QInt
 QInt QInt::CaculatorQint(string ss, int base)
 {
 	string temp = " ";
@@ -675,42 +683,49 @@ QInt QInt::CaculatorQint(string ss, int base)
 		ss.erase(0, pos + temp.length());
 	}
 	src.push_back(ss);
-	QInt temp1;
+	
 	(*this).scanQInt(src[0], base);
 	for (int i = 0; i < src.size(); i++)
 	{
 		if (src[i] == "+")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) + temp1;
 		}
 		if (src[i] == "-")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) - temp1;
 		}
 		if (src[i] == "*")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) * temp1;
 		}
 		if (src[i] == "/")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) / temp1;
 		}
 		if (src[i] == "&")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) & temp1;
 		}
 		if (src[i] == "|")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) | temp1;
 		}
 		if (src[i] == "^")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			(*this) = (*this) / temp1;
 		}
@@ -752,6 +767,7 @@ QInt QInt::CaculatorQint(string ss, int base)
 		}
 		if (src[i] == "<")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			if ((*this) < temp1)
 				cout << "\n\t *** Ket Qua: TRUE" << endl;
@@ -761,6 +777,7 @@ QInt QInt::CaculatorQint(string ss, int base)
 		}
 		if (src[i] == ">")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			if ((*this) > temp1)
 				cout << "\n\t *** Ket Qua: TRUE" << endl;
@@ -770,6 +787,7 @@ QInt QInt::CaculatorQint(string ss, int base)
 		}
 		if (src[i] == "<=")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			if ((*this) <= temp1)
 				cout << "\n\t *** Ket Qua: TRUE" << endl;
@@ -779,6 +797,7 @@ QInt QInt::CaculatorQint(string ss, int base)
 		}
 		if (src[i] == ">=")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			if ((*this) >= temp1)
 				cout << "\n\t *** Ket Qua: TRUE" << endl;
@@ -788,6 +807,7 @@ QInt QInt::CaculatorQint(string ss, int base)
 		}
 		if (src[i] == "=")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			if ((*this) == temp1)
 				cout << "\n\t *** Ket Qua: TRUE" << endl;
@@ -797,6 +817,7 @@ QInt QInt::CaculatorQint(string ss, int base)
 		}
 		if (src[i] == "!=")
 		{
+			QInt temp1;
 			temp1.scanQInt(src[i + 1], base);
 			if ((*this) != temp1)
 				cout << "\n\t *** Ket Qua: TRUE" << endl;

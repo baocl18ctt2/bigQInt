@@ -428,7 +428,7 @@ void Qfloat::Menu2()
 	{
 		system("cls");
 		cout << "\n\t ****************************" << endl;
-		cout << " \t ----- CALCULATOR QINT ----- " << endl;
+		cout << " \t ----- CALCULATOR QFLOAT ----- " << endl;
 		cout << "\t 1. DEC" << endl;
 		cout << "\t 2. BIN" << endl;
 		cout << "\t 0. EXIT" << endl;
