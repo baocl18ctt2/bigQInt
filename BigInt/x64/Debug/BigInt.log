@@ -1,10 +1,4 @@
-﻿  QInt.cpp
-D:\KTMT&HN\Project\BigInt\QInt.cpp(46,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QInt.cpp(193,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QInt.cpp(217,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QInt.cpp(246,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QInt.cpp(271,31): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QInt.cpp(296,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QInt.cpp(298,40): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-D:\KTMT&HN\Project\BigInt\QInt.cpp(545): warning C4715: 'QInt::operator<': not all control paths return a value
+﻿  Main.cpp
+D:\KTMT&HN\Project\BigInt\Main.cpp(122,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+D:\KTMT&HN\Project\BigInt\Main.cpp(32): warning C4715: 'key': not all control paths return a value
   BigInt.vcxproj -> D:\KTMT&HN\Project\x64\Debug\BigInt.exe

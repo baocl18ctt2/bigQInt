@@ -195,32 +195,32 @@ void main()
 				if (s[2] == "<")		//< > == <= >=
 				{
 					if (temp1 < temp2)
-						FileOut << "1" << endl;
-					else FileOut << "0" << endl;
+						FileOut << "TRUE" << endl;
+					else FileOut << "FALSE" << endl;
 				}
 				else if (s[2] == ">")
 				{
 					if (temp1 > temp2)
-						FileOut << "1" << endl;
-					else FileOut << "0" << endl;
+						FileOut << "TRUE" << endl;
+					else FileOut << "FALSE" << endl;
 				}
 				else if (s[2] == "==")
 				{
 					if (temp1 == temp2)
-						FileOut << "1" << endl;
-					else FileOut << "0" << endl;
+						FileOut << "TRUE" << endl;
+					else FileOut << "FALSE" << endl;
 				}
 				else if (s[2] == "<=")
 				{
 					if (temp1 <= temp2)
-						FileOut << "1" << endl;
-					else FileOut << "0" << endl;
+						FileOut << "TRUE" << endl;
+					else FileOut << "FALSE" << endl;
 				}
 				else if (s[2] == ">=")
 				{
 					if (temp1 > temp2)
-						FileOut << "1" << endl;
-					else FileOut << "0" << endl;
+						FileOut << "TRUE" << endl;
+					else FileOut << "FALSE" << endl;
 				}
 				else
 				{
@@ -230,7 +230,7 @@ void main()
 					}
 					else if (s[2] == "-")
 					{
-						temp = temp1 + temp2;
+						temp = temp1 - temp2;
 					}
 					else if (s[2] == "*")
 					{
@@ -274,8 +274,13 @@ void main()
 							temp = temp1.ror(timeMove);
 						}
 					}
-					if (k == 2)				//xuat dang 2
-						FileOut << temp.CreateBinStr() << endl;
+					if (k == 2)			
+					{	//xuat dang 2
+						string res = temp.CreateBinStr();
+						while (res[0] == '0' && res.length() > 1)
+							res.erase(0, 1);
+						FileOut << res << endl;
+					}
 					else if (k == 10)		//xuat dang 10
 						FileOut << temp.binToDec(temp) << endl;
 					else if (k == 16)		//xuat dang 16
@@ -312,4 +317,5 @@ void main()
 	FileOut.close();
 	FileIn.close();
 	return 0;
-}*/
+}
+*/
